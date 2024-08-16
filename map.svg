@@ -1,165 +1,59 @@
   <svg class="ag-canvas_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1008 651">
    <style>
-    /* Default styles for the SVG paths */
-.ag-canvas_svg path {
-  fill: #383d46; /* Dark grey for other countries */
-  fill-opacity: 2;
-  stroke: white; /* White borders for all countries */
-  stroke-opacity: 1;
-  stroke-width: 0.5;
-  transition: 0.5s;
-}
-#AE, #IT, #TR, #PT  {
-  transform: scale(2.6); /* Increase size by 20% */
-  transform-origin: center; /* Scale from the center of each country */
-  z-index: 1; /* Ensure these countries are above others */
-}
+   /* Default styles for the SVG paths */
+    .ag-canvas_svg path {
+      <!-- fill: #383d46; /* Dark grey for other countries */ -->
+      <!-- fill-opacity: 2; -->
+      <!-- stroke: grey; /* White borders for all countries */ -->
+      stroke-opacity: 1;
+      stroke-width: 0.5;
+      transition: 0.5s;
+    }
 
+    #AE, #IT, #TR, #PT  {
+      transform: scale(2.6); /* Increase size by 20% */
+      transform-origin: center; /* Scale from the center of each country */
+      z-index: 1; /* Ensure these countries are above others */
+    }
 
-/* Background and hover colors for specific countries */
-/* #AE { fill: #1E90FF; } 
-#AE:hover { fill: #4169E1; } 
-
-#IT { fill: #FF4500; } 
-#IT:hover { fill: #FF6347; } 
-
-#TR { fill: #32CD32; } 
-#TR:hover { fill: #00FF7F; } 
-
-#PT { fill: #FFD700; } 
-#PT:hover { fill: #FFA500; } 
-
-#VN { fill: #FF1493; } 
-#VN:hover { fill: #FF69B4; }  */
-
-/* Hover effect for other countries */
-.ag-canvas_svg path:hover {
-  fill: #565656; /* Slightly lighter grey on hover */
-}
-
-/* Styles for the location pins */
-.location-pin {
-  position: absolute;
-  width: 25px; /* Adjusted size for pins */
-  height: 25px;
-  background: url('pin.svg') no-repeat center center;
-  background-size: contain;
-  cursor: pointer;
-  z-index: 1000; /* Ensure pins are on top */
-}
-
-/* Adjust the positions of the location pins */
-#pin-dubai { top: 72%; left: 80%; } 
-#pin-milan { top: 47%; left: 50%; }
-#pin-bodrum { top: 55%; left: 65%; }
-#pin-lisbon { top: 55%; left: 38%; }
-#pin-vietnam { top: 60%; left: 76%; }
+    /* Hover effect for other countries */
+    .ag-canvas_svg path:hover {
+      fill: #565656; /* Slightly lighter grey on hover */
+    }
 
 
 
+    .ag-canvas {
+      display: flex;
+      align-items: center;
+      position: relative;
+      visibility: visible;
+      width: 100%;
+      height: 100%;
+      padding: 3rem 1rem;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
 
-/* Adjustments for screens 1024px and below */
-@media (max-width: 1024px) {
-  #pin-dubai { top: 70%; left: 78%; }
-  #pin-milan { top: 48%; left: 49%; }
-  #pin-bodrum { top: 57%; left: 64%; }
-  #pin-lisbon { top: 57%; left: 35%; }
-  #pin-vietnam { top: 62%; left: 74%; }
-}
+    .ag-canvas_svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      margin-left: 1rem;
+    }
 
-/* Adjustments for screens 768px and below */
-@media (max-width: 768px) {
-  #pin-dubai { top: 69%; left: 78%; }
-  #pin-milan { top: 45%; left: 49%; }
-  #pin-bodrum { top: 53%; left: 63%; }
-  #pin-lisbon { top: 51%; left: 37%; }
-  #pin-vietnam { top: 55%; left: 74%; }
-}
-
-/* Adjustments for screens 480px and below (mobile) */
-@media (max-width: 480px) {
-  #pin-dubai { top: 76%; left: 75%; }
-  #pin-milan { top: 50%; left: 47%; }
-  #pin-bodrum { top: 60%; left: 61%; }
-  #pin-lisbon { top: 57%; left: 34%; }
-  #pin-vietnam { top: 66%; left: 72%; }
-}
-
-/* Adjustments for screens 320px and below (small mobile) */
-@media (max-width: 320px) {
-  #pin-dubai { top: 70%; left: 73%; }
-  #pin-milan { top: 52%; left: 45%; }
-  #pin-bodrum { top: 62%; left: 60%; }
-  #pin-lisbon { top: 62%; left: 30%; }
-  #pin-vietnam { top: 68%; left: 70%; }
-}
-
-
-.location-pin:hover {
-  transform: scale(1.2); /* Enlarge the pin slightly on hover */
-}
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-html, body {
-  height: 100%;
-}
-#map-container {
-  background: #21252b;
-
-  color: #d3ddef;
-}
-
-.ag-canvas {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-
-  position: relative;
-  visibility: visible;
-
-  width: 100%;
-  height: 100%;
-  padding: 3rem 1rem;
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-.ag-canvas_svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 100%;
-  margin-left: 1rem;
-}
-/* .ag-canvas_svg path {
-  fill: #383d46;
-  fill-opacity: 1;
-  stroke: #21252b;
-  stroke-opacity: 1;
-  stroke-width: 0.5;
-  transition: 0.5s;
-} */
-
-@media screen and (max-width: 767px) {
-  .ag-canvas {
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    height: auto;
-    padding: 4rem 1rem 1rem;
-  }
-  .ag-canvas_svg {
-    max-height: calc(100% - 6rem);
-    margin-left: 0;
-  }
-}
-
+    @media screen and (max-width: 767px) {
+      .ag-canvas {
+        flex-flow: row wrap;
+        height: auto;
+        padding: 4rem 1rem 1rem;
+      }
+      .ag-canvas_svg {
+        max-height: calc(100% - 6rem);
+        margin-left: 0;
+      }
+    }
   </style>
           
           <path id="AE" title="United Arab Emirates" d="M619.874,393.722L620.373,393.573L620.477,394.411L622.671,393.93L624.99,394.009L626.684,394.1L628.604,392.028L630.695,390.054L632.467,388.146L633.001,389.202L633.382,391.639L631.949,391.651L631.72,393.648L632.216,394.073L630.947,394.674L630.939,395.919L630.122,397.175L630.049,398.394L629.484,399.032L621.056,397.508L619.981,394.428z" />
