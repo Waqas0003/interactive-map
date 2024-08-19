@@ -10,8 +10,8 @@
       transition: 0.5s;
     }
 
-    #AE, #IT, #TR, #PT  {
-      transform: scale(2.6); /* Increase size by 20% */
+    #IT, #TR  {
+      transform: scale(2.0); /* Increase size by 20% */
       transform-origin: center; /* Scale from the center of each country */
       z-index: 1; /* Ensure these countries are above others */
     }
